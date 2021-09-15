@@ -6,11 +6,33 @@
         $menu = [
             "home" => "home.php",
             "smartphone" => "smartphone.php",
-            "jeux"=> "jeux.php"
+            "jeux"=> "jeux.php",
+            "produits"=>"produit.php"
         ];
         if(array_key_exists($_GET['action'],$menu))
         {
-            $action = $menu[$_GET['action']]; 
+            if($_GET['action']=="produits")
+            {
+                if(isset($_GET['id']) AND !empty($_GET['id']))
+                {
+                    $id = htmlspecialchars($_GET['id']);
+                    $produit = $bdd->prepare("SELECT * FROM produits WHERE id=?");
+                    $produit->execute([$id]);
+                    if(!$donProd = $produit->fetch())
+                    {
+                        header("HTTP/1.1 404 Not Found");
+                        $action = "404.php"; 
+                    }else{
+                        $action = $menu['produits']; 
+                    }
+                    $produit->closeCursor();
+                }else{
+                    header("HTTP/1.1 404 Not Found");
+                    $action = "404.php"; 
+                }
+            }else{
+                $action = $menu[$_GET['action']]; 
+            }
         }else{
             header("HTTP/1.1 404 Not Found");
             $action = "404.php";
