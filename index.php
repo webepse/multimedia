@@ -1,5 +1,24 @@
 <?php
+    session_start();
     require "connexion.php";
+    if(isset($_GET['action']))
+    {
+        $menu = [
+            "home" => "home.php",
+            "smartphone" => "smartphone.php",
+            "jeux"=> "jeux.php"
+        ];
+        if(array_key_exists($_GET['action'],$menu))
+        {
+            $action = $menu[$_GET['action']]; 
+        }else{
+            header("HTTP/1.1 404 Not Found");
+            $action = "404.php";
+        }
+
+    }else{
+        $action="home.php";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,13 +44,15 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="index.php">Jeux Vidéo</a></li>
-                <li><a href="index.php">Smartphone</a></li>
+                <li><a href="index.php?action=jeux">Jeux Vidéo</a></li>
+                <li><a href="index.php?action=smartphone" >Smartphone</a></li>
             </ul>
         </nav>
     </header>
     <main>
-
+        <?php
+            include("pages/".$action);
+        ?>
 
     </main>
     <footer>
