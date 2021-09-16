@@ -22,7 +22,7 @@
 <body>
     <div class="container">
         <h1>Gestion des membres</h1>
-        <a href="dashboard.php" class="btn btn-secondary">Retour</a>
+        <a href="dashboard.php" class="btn btn-secondary my-2">Retour</a>
         <?php
           
 
@@ -57,7 +57,10 @@
                         echo "<td>".$don['level']."</td>";
                         echo "<td class='text-center'>";
                             echo "<a href='updateMember.php?id=".$don['id']."' class='btn btn-warning mx-2'>Modifier</a>";
-                            echo "<a href='deleteMember.php?id=".$don['id']."' class='btn btn-danger mx-2'>Supprimer</a>";
+                            if($_SESSION['login']!=$don['login'])
+                            {
+                                echo "<a href='deleteMember.php?id=".$don['id']."' class='btn btn-danger mx-2'>Supprimer</a>";
+                            }
                         echo "</td>";
                     echo "</tr>";    
                 }

@@ -32,10 +32,10 @@
            </div>
        </div>
        <div class="row">
-           <div class="col-3">
+           <div class="col-12">
                <a href="product.php" class="btn btn-success m-2">Mes Produits</a>
            </div>
-           <div class="col-3">
+           <div class="col-12">
                <a href="member.php" class="btn btn-success m-2">Mes membres</a>
            </div>
        </div>

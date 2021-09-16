@@ -23,6 +23,7 @@
     <div class="container">
         <h1>Gestion des produits</h1>
         <a href="addProd.php" class="btn btn-primary my-2">Ajouter un produit</a>
+        <a href="dashboard.php" class="btn btn-secondary m-2">Retour</a>
         <?php
             if(isset($_GET['add']))
             {
