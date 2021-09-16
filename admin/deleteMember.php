@@ -39,7 +39,6 @@
         $delete->closeCursor();
         header("LOCATION:member.php?delete=success&id=".$id);
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">

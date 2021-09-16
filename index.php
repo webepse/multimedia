@@ -7,7 +7,10 @@
             "home" => "home.php",
             "smartphone" => "smartphone.php",
             "jeux"=> "jeux.php",
-            "produits"=>"produit.php"
+            "produits"=>"produit.php",
+            "inscription"=>"inscription.php",
+            "connexion"=>"connex.php",
+            "deconnexion"=>"deco"
         ];
         if(array_key_exists($_GET['action'],$menu))
         {
@@ -30,6 +33,9 @@
                     header("HTTP/1.1 404 Not Found");
                     $action = "404.php"; 
                 }
+            }elseif($_GET['action']=="deconnexion"){
+                session_destroy();
+                header("LOCATION:index.php");
             }else{
                 $action = $menu[$_GET['action']]; 
             }
@@ -61,7 +67,20 @@
             </div>
         </form>
         <div id="connexion">
-            <h1>connexion</h1>
+            <?php
+                if(!isset($_SESSION['login']))
+                {
+            ?>
+                <a href="index.php?action=inscription">Inscription</a>
+                <a href="index.php?action=connexion">Connexion</a>
+
+            <?php    
+                }else{
+            ?>
+                <a href="index.php?action=deconnexion">Déconnexion</a>
+            <?php
+                }
+            ?>    
         </div>
         <nav>
             <ul>
