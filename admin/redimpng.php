@@ -52,7 +52,13 @@ imagepng($destination,$rep_nom);
 // redirection
 
 
-header("LOCATION:jeux.php?ajout=ok");
+if(isset($_GET['update']))
+{
+    header("LOCATION:product.php?update=success&id=".$_GET['update']);
+}else{
+
+    header("LOCATION:product.php?add=success");
+}
 
 
 
