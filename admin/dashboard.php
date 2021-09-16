@@ -4,6 +4,12 @@
     {
         header("LOCATION:index.php");
     }
+
+    if(isset($_GET['deco']))
+    {
+        session_destroy();
+        header("LOCATION:index.php");
+    }
   
 ?>
 <!DOCTYPE html>
@@ -19,6 +25,17 @@
 <body>
     <div class="container">
        <h1>Dashboard</h1>
+       <div class="row">
+           <div class="col-6">
+               <a href="../index.php" class="btn btn-secondary m-3" target="_blank">Retour au site</a>
+               <a href="dashboard.php?deco=ok" class="btn btn-secondary m-3">Déconnexion</a>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-3">
+               <a href="product.php" class="btn btn-success m-2">Mes Produits</a>
+           </div>
+       </div>
     </div>
 </body>
 </html>
