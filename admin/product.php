@@ -23,7 +23,20 @@
     <div class="container">
         <h1>Gestion des produits</h1>
         <a href="addProd.php" class="btn btn-primary my-2">Ajouter un produit</a>
-       <table class="table table-striped">
+        <?php
+            if(isset($_GET['add']))
+            {
+                echo "<div class='alert alert-success'>Votre produit a bien été ajouté</div>";
+            }
+
+            if(isset($_GET['update']))
+            {
+                echo "<div class='alert alert-warning'>le produit n°".$_GET['id']." a bien été modifié</div>";
+            }
+
+        ?>
+       
+        <table class="table table-striped">
            <tr>
                <th>id</th>
                <th>Marque</th>
