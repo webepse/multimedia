@@ -35,6 +35,9 @@
            <div class="col-3">
                <a href="product.php" class="btn btn-success m-2">Mes Produits</a>
            </div>
+           <div class="col-3">
+               <a href="member.php" class="btn btn-success m-2">Mes membres</a>
+           </div>
        </div>
     </div>
 </body>
