@@ -34,6 +34,11 @@
                 echo "<div class='alert alert-warning'>le produit n°".$_GET['id']." a bien été modifié</div>";
             }
 
+            if(isset($_GET['delete']))
+            {
+                echo "<div class='alert alert-danger'>le produit n°".$_GET['id']." a bien été supprimé</div>";
+            }
+
         ?>
        
         <table class="table table-striped">
