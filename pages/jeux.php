@@ -14,7 +14,7 @@
     {
         $pg=1;
     }
-    $limit=($pg-1)*6;
+    $offset=($pg-1)*6;
     echo "<div id='pagination'>";
        if($pg>1)
        {
@@ -30,7 +30,7 @@
 <div class="container">
     <?php
         $req = $bdd->prepare("SELECT * FROM produits WHERE type='Jeux video' ORDER BY prix DESC LIMIT :offset,6");
-        $req->bindParam(':offset',$limit, PDO::PARAM_INT);
+        $req->bindParam(':offset',$offset, PDO::PARAM_INT);
         $req->execute();
         while($don = $req->fetch()){
     ?>
