@@ -1,7 +1,37 @@
+<?php
+      $reqcount=$bdd->query("SELECT * FROM produits WHERE type='Smartphone'");
+      $count = $reqcount->rowCount();
+      $nbpage=ceil($count/6); 
+?>
+
 <h1>Smartphone</h1>
+<?php
+    if(isset($_GET['page']))
+    {
+        $pg=$_GET['page'];
+    }
+    else
+    {
+        $pg=1;
+    }
+    $limit=($pg-1)*6;
+    echo "<div id='pagination'>";
+       if($pg>1)
+       {
+       echo "<a href='index.php?action=smartphone&page=".($pg-1)."' title='Page précédente'><</a>&nbsp;";
+       }
+       echo "Page ".$pg;
+       if($pg!=$nbpage)
+       {
+       echo " <a href='index.php?action=smartphone&page=".($pg+1)."' title='Page suivante'>></a>";
+       }            
+    echo "</div>";
+?>
 <div class="container">
     <?php
-        $req = $bdd->query("SELECT * FROM produits WHERE type='smartphone'");
+        $req = $bdd->prepare("SELECT * FROM produits WHERE type='Smartphone' ORDER BY prix DESC LIMIT :offset,6");
+        $req->bindParam(':offset',$limit, PDO::PARAM_INT);
+        $req->execute();
         while($don = $req->fetch()){
     ?>
         <div class="card">
@@ -17,6 +47,7 @@
 
     <?php
         }   
+        $req->closeCursor();
         /*
         $don = $req->fetchAll();
         var_dump($don);

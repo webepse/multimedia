@@ -54,8 +54,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/baguetteBox.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="assets/baguetteBox.min.js"></script>
     <title>Multimédia</title>
+    <script>
+        window.addEventListener("load",()=>{
+            baguetteBox.run('.image')
+        })
+    </script>
 </head>
 <body>
     <header>

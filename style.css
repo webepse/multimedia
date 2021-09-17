@@ -129,3 +129,7 @@ header .form-group{
     grid-column: 2/span 1;
     width: 100%;
 }
+
+.container-product{
+    text-align: center;
+}
