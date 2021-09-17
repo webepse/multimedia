@@ -56,6 +56,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/baguetteBox.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- https://github.com/feimosi/baguetteBox.js -->
     <script src="assets/baguetteBox.min.js"></script>
     <title>Multimédia</title>
     <script>
