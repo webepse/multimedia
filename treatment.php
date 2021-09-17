@@ -9,15 +9,15 @@
             $err=1;
         }else{
             $login = htmlspecialchars($_POST['login']);
-            if($login!=$don['login'])
+       
+            $user = $bdd->prepare("SELECT login FROM membre WHERE login=?");
+            $user->execute([$login]);
+            if($donUser = $user->fetch())
             {
-                $user = $bdd->prepare("SELECT * FROM membre WHERE login=?");
-                $user->execute([$login]);
-                if($donUser = $user->fetch())
-                {
-                    $err=2;
-                }
+                $err=2;
             }
+            $user->closeCursor();
+           
         }
 
         if(!empty($_POST['password']))
@@ -33,11 +33,18 @@
             $err=4;
         }
 
-        if(empty($_POST['email']))
+        if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,6}$#", $_POST['email']))
         {
-            $err=5;
-        }else{
             $email=htmlspecialchars($_POST['email']);
+            $reqEmail = $bdd->prepare("SELECT * FROM membre WHERE mail=?");
+            $reqEmail->execute([$email]);
+            if($donMail = $reqEmail->fetch())
+            {
+                $err=6;
+            }
+            $reqEmail->closeCursor();
+        }else{
+            $err=5;
         }
 
 

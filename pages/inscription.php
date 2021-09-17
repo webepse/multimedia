@@ -28,7 +28,22 @@
         <?php
             if(isset($_GET['err']))
             {
-                echo "<div class='alert'>Un problème est survenu</div>";
+                if($_GET['err']=="2")
+                {
+                    echo "<div class='alert'>Le login existe déjà dans la base de données, veuillez en choisir un autre</div>"; 
+                }elseif($_GET['err']=="3")
+                {
+                    echo "<div class='alert'>Les mots de passe ne correspondent pas</div>"; 
+                }elseif($_GET['err']=="5")
+                {
+                    echo "<div class='alert'>L'adresse E-mail n'est pas valide</div>"; 
+                }elseif($_GET['err']=="6")
+                {
+                    echo "<div class='alert'>L'adresse E-mail que vous avez utilisée est déjà enregistrée, veuillez en choisir une autre</div>"; 
+                }
+                else{
+                    echo "<div class='alert'>Un problème est survenu</div>";
+                }
             }
         ?>
     </form>
