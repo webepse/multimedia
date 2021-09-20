@@ -10,7 +10,8 @@
             "produits"=>"produit.php",
             "inscription"=>"inscription.php",
             "connexion"=>"connex.php",
-            "deconnexion"=>"deco"
+            "deconnexion"=>"deco",
+            "user"=>"user.php"
         ];
         if(array_key_exists($_GET['action'],$menu))
         {
@@ -33,7 +34,26 @@
                     header("HTTP/1.1 404 Not Found");
                     $action = "404.php"; 
                 }
-            }elseif($_GET['action']=="deconnexion"){
+            }elseif($_GET['action']=="user"){
+                if(isset($_GET['id']) AND !empty($_GET['id']))
+                {
+                    $id = htmlspecialchars($_GET['id']);
+                    $user = $bdd->prepare("SELECT * FROM membre WHERE id=?");
+                    $user->execute([$id]);
+                    if(!$donUser = $user->fetch())
+                    {
+                        header("HTTP/1.1 404 Not Found");
+                        $action = "404.php"; 
+                    }else{
+                        $action = $menu['user']; 
+                    }
+                    $user->closeCursor();
+                }else{
+                    header("HTTP/1.1 404 Not Found");
+                    $action = "404.php"; 
+                }
+            }
+            elseif($_GET['action']=="deconnexion"){
                 session_destroy();
                 header("LOCATION:index.php");
             }else{

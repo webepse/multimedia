@@ -133,3 +133,53 @@ header .form-group{
 .container-product{
     text-align: center;
 }
+
+.commentaires{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.coms{
+    width: 60%;
+    margin: 15px auto;
+    border: solid 1px black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.comsInfo{
+    color: white;
+    background-color: dodgerblue;
+    display: flex;
+    padding: 5px;
+}
+
+.comTxt{
+    padding: 15px 5px;
+    text-align: left;
+}
+
+.date{
+    margin-left: 10px;
+}
+
+.author{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.user h4{
+    text-align: center;
+}
+
+.form-com{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.form-com textarea{
+    padding: 5px;
+    resize: none;
+}
+
