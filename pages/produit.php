@@ -50,6 +50,18 @@
                     echo "<div class='comsInfo'>";
                     echo "<a href='index.php?action=user&id=".$donComs['Mid']."' class='author'>".$donComs['mLogin']."</a>";
                     echo "<div class='date'>".$donComs['myDate']."</div>";
+                    if(isset($_SESSION['level']))
+                    {
+                        if($_SESSION['level']=="administrateur")
+                        {
+                            echo "<a href=''>Supprimer</a>";
+                        }
+                        
+                        if($_SESSION['id']==$donComs['Mid'])
+                        {
+                            echo "<a href=''>Modif</a>";
+                        }
+                    }
                     echo "</div>";
                     echo "<div class='comTxt'>".nl2br($donComs['cTexte'])."</div>";
                 echo "</div>";
