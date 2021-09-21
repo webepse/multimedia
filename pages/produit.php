@@ -1,4 +1,10 @@
 <div class="container-product">
+    <?php
+        if(isset($_GET['deleteCom']))
+        {
+            echo '<div class="alert">Un commentaire a été supprimé</div>';
+        }
+    ?>
     <h3><?= $donProd['marque'] ?></h3>
     <h1><?= $donProd['nom'] ?></h1>
     <div class="image">
@@ -42,7 +48,7 @@
         ?>
       
         <?php 
-            $coms = $bdd->prepare("SELECT commentaires.texte AS cTexte, DATE_FORMAT(commentaires.date, '%d/%m/%Y %Hh:%i') AS myDate, commentaires.id_membre AS Mid, membre.login AS mLogin FROM commentaires INNER JOIN membre ON commentaires.id_membre = membre.id WHERE commentaires.id_produit=? ORDER BY commentaires.date DESC");
+            $coms = $bdd->prepare("SELECT commentaires.texte AS cTexte, DATE_FORMAT(commentaires.date, '%d/%m/%Y %Hh:%i') AS myDate, commentaires.id_membre AS Mid, membre.login AS mLogin, commentaires.id AS Cid FROM commentaires INNER JOIN membre ON commentaires.id_membre = membre.id WHERE commentaires.id_produit=? ORDER BY commentaires.date DESC");
             $coms->execute([$id]);
             while($donComs = $coms->fetch())
             {
@@ -54,7 +60,7 @@
                     {
                         if($_SESSION['level']=="administrateur")
                         {
-                            echo "<a href=''>Supprimer</a>";
+                            echo "<a href='treatDelete.php?id=".$donComs['Cid']."&pid=".$id."'>Supprimer</a>";
                         }
                         
                         if($_SESSION['id']==$donComs['Mid'])
