@@ -99,10 +99,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/baguetteBox.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/baguetteBox.min.css">
+    <link rel="stylesheet" href="./style.css">
     <!-- https://github.com/feimosi/baguetteBox.js -->
-    <script src="assets/baguetteBox.min.js"></script>
+    <script src="./assets/baguetteBox.min.js"></script>
     <title>Multimédia</title>
     <script>
         window.addEventListener("load",()=>{
@@ -124,13 +124,13 @@
                 if(!isset($_SESSION['login']))
                 {
             ?>
-                <a href="index.php?action=inscription">Inscription</a>
-                <a href="index.php?action=connexion">Connexion</a>
+                <a href="inscription">Inscription</a>
+                <a href="connexion">Connexion</a>
 
             <?php    
                 }else{
             ?>
-                <a href="index.php?action=deconnexion">Déconnexion</a>
+                <a href="deconnexion">Déconnexion</a>
             <?php
                 }
             ?>    
@@ -138,8 +138,8 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="index.php?action=jeux">Jeux Vidéo</a></li>
-                <li><a href="index.php?action=smartphone" >Smartphone</a></li>
+                <li><a href="jeux">Jeux Vidéo</a></li>
+                <li><a href="smartphone" >Smartphone</a></li>
             </ul>
         </nav>
     </header>

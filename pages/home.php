@@ -9,7 +9,7 @@
                 <img src="image/mini_<?= $don['image'] ?>" alt="<?= $don['nom'] ?>">
             </div>
             <div class="card-body">
-            <div class="model"><a href="index.php?action=produits&id=<?= $don['id'] ?>"><?= $don['nom'] ?></a></div>
+            <div class="model"><a href="produits-<?= $don['id'] ?>"><?= $don['nom'] ?></a></div>
                 <div class="mark"><?= $don['marque'] ?></div>
                 <div class="price"><?= $don['prix'] ?>€</div>
             </div>

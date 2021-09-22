@@ -1,0 +1,7 @@
+Options +FollowSymlinks
+RewriteEngine On
+#pour les alias
+RewriteBase /PHP_JORDAN/ex_multimedia/
+
+RewriteRule ^([a-z]+)$ index.php?action=$1 [L] 
+RewriteRule ^([a-z]+)-([0-9]+)$ index.php?action=$1&id=$2 [L] 
