@@ -65,7 +65,7 @@
                         
                         if($_SESSION['id']==$donComs['Mid'])
                         {
-                            echo "<a href=''>Modif</a>";
+                            echo "<a href='index.php?action=update&id=".$donComs['Cid']."'>Modif</a>";
                         }
                     }
                     echo "</div>";

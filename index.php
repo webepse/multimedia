@@ -11,7 +11,8 @@
             "inscription"=>"inscription.php",
             "connexion"=>"connex.php",
             "deconnexion"=>"deco",
-            "user"=>"user.php"
+            "user"=>"user.php",
+            "update"=>"updateCom.php"
         ];
         if(array_key_exists($_GET['action'],$menu))
         {
@@ -56,6 +57,30 @@
             elseif($_GET['action']=="deconnexion"){
                 session_destroy();
                 header("LOCATION:index.php");
+            }
+            elseif($_GET['action']=="update"){
+                if(isset($_GET['id']) AND !empty($_GET['id']))
+                {
+                    $comId=htmlspecialchars($_GET['id']);
+                    $reqCom = $bdd->prepare("SELECT * FROM commentaires WHERE id=?");
+                    $reqCom->execute([$comId]);
+                    if(!$donIdCom = $reqCom->fetch())
+                    {
+                        header("HTTP/1.1 404 Not Found");
+                        $action = "404.php";
+                    }else{
+                        if($_SESSION['id']==$donIdCom['id_membre'])
+                        {
+                            $action= $menu['update'];
+                        }else{
+                            header("HTTP/1.1 404 Not Found");
+                            $action = "404.php";
+                        }
+                    }
+                }else{
+                    header("HTTP/1.1 404 Not Found");
+                    $action = "404.php";
+                }
             }else{
                 $action = $menu[$_GET['action']]; 
             }
